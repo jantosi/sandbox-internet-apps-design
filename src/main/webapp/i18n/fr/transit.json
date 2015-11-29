@@ -1,0 +1,27 @@
+{
+    "spedycjaApp": {
+        "transit" : {
+            "home": {
+                "title": "Transits",
+                "createLabel": "Créer un nouveau Transit",
+                "createOrEditLabel": "Créer ou éditer un Transit"
+            },
+            "created": "Un nouveau Transit a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Transit avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Transit avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Transit {{ id }} ?"
+            },
+            "detail": {
+                "title": "Transit"
+            },
+            "type": "Type",
+            "status": "Status",
+            "startTime": "StartTime",
+            "endTime": "EndTime",
+            "employee": "Employee",
+            "transporter": "Transporter"
+        }
+    }
+}
+

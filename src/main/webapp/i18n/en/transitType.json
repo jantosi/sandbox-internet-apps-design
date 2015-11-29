@@ -1,0 +1,11 @@
+{
+    "spedycjaApp": {
+        "TransitType" : {
+            "null": "",
+            "NORMAL": "NORMAL",
+            "EXPRESS": "EXPRESS",
+            "BUDGET": "BUDGET",
+            "AIRMAIL": "AIRMAIL"
+        }
+    }
+}
