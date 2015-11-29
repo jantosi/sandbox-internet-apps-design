@@ -1,0 +1,12 @@
+{
+    "spedycjaApp": {
+        "TransporterType" : {
+            "null": "",
+            "CAR": "CAR",
+            "TRUCK": "TRUCK",
+            "MINIVAN": "MINIVAN",
+            "VAN": "VAN",
+            "SUV": "SUV"
+        }
+    }
+}
