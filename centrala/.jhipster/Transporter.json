@@ -1,0 +1,40 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "location",
+            "otherEntityName": "department",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "transporterInfo",
+            "otherEntityName": "transporterInfo",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "model",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "transporter"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "purchaseTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "withdrawalTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151202234147",
+    "dto": "no",
+    "pagination": "pagination"
+}

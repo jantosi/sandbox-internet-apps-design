@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="spedycjacentralaApp.transporterInfo.detail.title">TransporterInfo</span> {{transporterInfo.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="spedycjacentralaApp.transporterInfo.type">Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'spedycjacentralaApp.TransporterType.' + transporterInfo.type}}">{{transporterInfo.type}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="spedycjacentralaApp.transporterInfo.model">Model</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{transporterInfo.model}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="spedycjacentralaApp.transporterInfo.make">Make</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{transporterInfo.make}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="spedycjacentralaApp.transporterInfo.year">Year</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{transporterInfo.year | date:'medium'}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

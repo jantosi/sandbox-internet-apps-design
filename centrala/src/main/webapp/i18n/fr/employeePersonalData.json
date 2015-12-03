@@ -1,0 +1,26 @@
+{
+    "spedycjacentralaApp": {
+        "employeePersonalData" : {
+            "home": {
+                "title": "EmployeePersonalDatas",
+                "createLabel": "Créer un nouveau EmployeePersonalData",
+                "createOrEditLabel": "Créer ou éditer un EmployeePersonalData"
+            },
+            "created": "Un nouveau EmployeePersonalData a été créé avec l'identifiant {{ param }}",
+            "updated": "Le EmployeePersonalData avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le EmployeePersonalData avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le EmployeePersonalData {{ id }} ?"
+            },
+            "detail": {
+                "title": "EmployeePersonalData"
+            },
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "firstName": "FirstName",
+            "lastName": "LastName",
+            "address": "Address"
+        }
+    }
+}
+
