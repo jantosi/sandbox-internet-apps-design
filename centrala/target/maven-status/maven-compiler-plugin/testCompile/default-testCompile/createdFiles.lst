@@ -1,0 +1,12 @@
+pl/lodz/p/ftims/pai/web/rest/EmployeeResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/DepartmentResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/TransporterInfoResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/EmployeePersonalDataResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/AuditResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/TransitResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/AccountResourceIntTest.class
+pl/lodz/p/ftims/pai/service/UserServiceIntTest.class
+pl/lodz/p/ftims/pai/security/SecurityUtilsUnitTest.class
+pl/lodz/p/ftims/pai/web/rest/UserResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/TransporterResourceIntTest.class
+pl/lodz/p/ftims/pai/web/rest/TestUtil.class

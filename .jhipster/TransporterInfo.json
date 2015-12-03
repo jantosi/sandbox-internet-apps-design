@@ -1,0 +1,29 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "type",
+            "fieldType": "TransporterType",
+            "fieldValues": "VAN,CAR,SUV,CARGO,AERO,BIKE"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "model",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "make",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "year",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20151202233752",
+    "dto": "no",
+    "pagination": "pager"
+}

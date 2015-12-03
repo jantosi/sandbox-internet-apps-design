@@ -1,0 +1,24 @@
+{
+    "spedycjacentralaApp": {
+        "transporterInfo" : {
+            "home": {
+                "title": "TransporterInfos",
+                "createLabel": "Create a new TransporterInfo",
+                "createOrEditLabel": "Create or edit a TransporterInfo"
+            },
+            "created": "A new TransporterInfo is created with identifier {{ param }}",
+            "updated": "A TransporterInfo is updated with identifier {{ param }}",
+            "deleted": "A TransporterInfo is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TransporterInfo {{ id }}?"
+            },
+            "detail": {
+                "title": "TransporterInfo"
+            },
+            "type": "Type",
+            "model": "Model",
+            "make": "Make",
+            "year": "Year"
+        }
+    }
+}

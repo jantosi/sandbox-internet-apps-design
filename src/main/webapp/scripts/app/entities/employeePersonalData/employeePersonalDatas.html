@@ -1,0 +1,56 @@
+<div>
+    <h2 translate="spedycjacentralaApp.employeePersonalData.home.title">EmployeePersonalDatas</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="employeePersonalData.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="spedycjacentralaApp.employeePersonalData.home.createLabel">Create a new EmployeePersonalData</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="spedycjacentralaApp.employeePersonalData.startDate">StartDate</th>
+                    <th translate="spedycjacentralaApp.employeePersonalData.endDate">EndDate</th>
+                    <th translate="spedycjacentralaApp.employeePersonalData.firstName">FirstName</th>
+                    <th translate="spedycjacentralaApp.employeePersonalData.lastName">LastName</th>
+                    <th translate="spedycjacentralaApp.employeePersonalData.address">Address</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employeePersonalData in employeePersonalDatas track by employeePersonalData.id">
+                    <td><a ui-sref="employeePersonalData.detail({id:employeePersonalData.id})">{{employeePersonalData.id}}</a></td>
+                    <td>{{employeePersonalData.startDate | date:'medium'}}</td>
+                    <td>{{employeePersonalData.endDate | date:'medium'}}</td>
+                    <td>{{employeePersonalData.firstName}}</td>
+                    <td>{{employeePersonalData.lastName}}</td>
+                    <td>{{employeePersonalData.address}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="employeePersonalData.detail({id:employeePersonalData.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="employeePersonalData.edit({id:employeePersonalData.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="employeePersonalData.delete({id:employeePersonalData.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
