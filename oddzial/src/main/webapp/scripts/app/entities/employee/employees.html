@@ -1,0 +1,50 @@
+<div>
+    <h2 translate="spedycjaoddzialApp.employee.home.title">Employees</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="employee.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="spedycjaoddzialApp.employee.home.createLabel">Create a new Employee</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="spedycjaoddzialApp.employee.login">Login</th>
+                    <th translate="spedycjaoddzialApp.employee.password">Password</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees track by employee.id">
+                    <td><a ui-sref="employee.detail({id:employee.id})">{{employee.id}}</a></td>
+                    <td>{{employee.login}}</td>
+                    <td>{{employee.password}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="employee.detail({id:employee.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="employee.edit({id:employee.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="employee.delete({id:employee.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
