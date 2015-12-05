@@ -1,0 +1,64 @@
+<div>
+    <h2 translate="spedycjaoddzialApp.transit.home.title">Transits</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="transit.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="spedycjaoddzialApp.transit.home.createLabel">Create a new Transit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="spedycjaoddzialApp.transit.type">Type</th>
+                    <th translate="spedycjaoddzialApp.transit.startTime">StartTime</th>
+                    <th translate="spedycjaoddzialApp.transit.endTime">EndTime</th>
+                    <th translate="spedycjaoddzialApp.transit.employee">employee</th>
+                    <th translate="spedycjaoddzialApp.transit.transporter">transporter</th>
+                    <th translate="spedycjaoddzialApp.transit.department">department</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="transit in transits track by transit.id">
+                    <td><a ui-sref="transit.detail({id:transit.id})">{{transit.id}}</a></td>
+                    <td translate="{{'spedycjaoddzialApp.TransitType.' + transit.type}}">{{transit.type}}</td>
+                    <td>{{transit.startTime | date:'medium'}}</td>
+                    <td>{{transit.endTime | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="employee.detail({id:transit.employee.id})">{{transit.employee.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="transporter.detail({id:transit.transporter.id})">{{transit.transporter.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="department.detail({id:transit.department.id})">{{transit.department.id}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="transit.detail({id:transit.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="transit.edit({id:transit.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="transit.delete({id:transit.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

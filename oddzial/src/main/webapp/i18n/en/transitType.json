@@ -1,0 +1,11 @@
+{
+    "spedycjaoddzialApp": {
+        "TransitType" : {
+            "null": "",
+            "EXPRESS": "EXPRESS",
+            "NORMAL": "NORMAL",
+            "BUDGET": "BUDGET",
+            "CUSTOM": "CUSTOM"
+        }
+    }
+}
