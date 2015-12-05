@@ -1,13 +1,13 @@
 {
     "main": {
-        "title": "Welcome, Java Hipster!",
+        "title": "Welcome to Central System Homepage!",
         "subtitle": "This is your homepage",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },
         "question": "If you have any question on JHipster:",
         "link": {
-            "homepage": "JHipster homepage",
+            "homepage": "Source code repository",
             "stackoverflow": "JHipster on Stack Overflow",
             "bugtracker": "JHipster bug tracker",
             "chat": "JHipster public chat room",

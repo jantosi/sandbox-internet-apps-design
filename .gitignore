@@ -48,6 +48,7 @@ local.properties
 ######################
 # Intellij
 ######################
+/centrala/.idea/**
 .idea/**
 *.iml
 *.iws
@@ -60,6 +61,7 @@ local.properties
 ######################
 /log/**
 /target/**
+centrala/target/**
 /.mvn/**
 ######################
 # Gradle
