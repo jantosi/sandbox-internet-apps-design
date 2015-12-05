@@ -2,6 +2,9 @@
 # Project Specific
 ######################
 /src/main/webapp/dist
+oddzial/.idea/
+oddzial/target/
+centrala/target/
 
 ######################
 # Node
