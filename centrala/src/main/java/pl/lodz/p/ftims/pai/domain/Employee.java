@@ -2,33 +2,43 @@ package pl.lodz.p.ftims.pai.domain;
 
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
  * A Employee.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "employee", propOrder = {
+    "id",
+    "login",
+})
 @Entity
 @Table(name = "employee")
 public class Employee implements Serializable {
 
+    @XmlElement(required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @XmlElement(required = true)
     @Column(name = "login")
     private String login;
 
+    @XmlTransient
     @Column(name = "position")
     private String position;
 
+    @XmlTransient
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 
-    @OneToOne    private EmployeePersonalData employeePersonalData;
+    @XmlTransient
+    @OneToOne
+    private EmployeePersonalData employeePersonalData;
 
     public Long getId() {
         return id;
