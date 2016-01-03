@@ -3,6 +3,7 @@ package pl.lodz.p.ftims.pai.domain;
 import java.time.ZonedDateTime;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,28 +12,39 @@ import java.util.Objects;
 /**
  * A Transporter.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "transporter", propOrder = {
+    "id",
+})
 @Entity
 @Table(name = "transporter")
 public class Transporter implements Serializable {
 
+    @XmlElement(required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @XmlTransient
     @Column(name = "purchase_time")
     private ZonedDateTime purchaseTime;
 
+    @XmlTransient
     @Column(name = "withdrawal_time")
     private ZonedDateTime withdrawalTime;
 
+    @XmlTransient
     @Column(name = "name")
     private String name;
 
+    @XmlTransient
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Department location;
 
-    @OneToOne    private TransporterInfo transporterInfo;
+    @XmlTransient
+    @OneToOne
+    private TransporterInfo transporterInfo;
 
     public Long getId() {
         return id;
