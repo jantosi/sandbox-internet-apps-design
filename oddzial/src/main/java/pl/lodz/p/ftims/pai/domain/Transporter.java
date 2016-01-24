@@ -13,7 +13,6 @@ import java.util.Objects;
 public class Transporter implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     public Long getId() {

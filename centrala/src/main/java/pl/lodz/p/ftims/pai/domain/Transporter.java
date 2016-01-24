@@ -1,12 +1,9 @@
 package pl.lodz.p.ftims.pai.domain;
 
-import java.time.ZonedDateTime;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**

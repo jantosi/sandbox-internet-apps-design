@@ -72,7 +72,7 @@ public class DepartmentResourceIntTest {
     @Before
     public void initTest() {
         department = new Department();
-        department.setDepartmentName(DEFAULT_DEPARTMENT_NAME);
+        department.setName(DEFAULT_DEPARTMENT_NAME);
         department.setAddress(DEFAULT_ADDRESS);
     }
 
@@ -92,7 +92,7 @@ public class DepartmentResourceIntTest {
         List<Department> departments = departmentRepository.findAll();
         assertThat(departments).hasSize(databaseSizeBeforeCreate + 1);
         Department testDepartment = departments.get(departments.size() - 1);
-        assertThat(testDepartment.getDepartmentName()).isEqualTo(DEFAULT_DEPARTMENT_NAME);
+        assertThat(testDepartment.getName()).isEqualTo(DEFAULT_DEPARTMENT_NAME);
         assertThat(testDepartment.getAddress()).isEqualTo(DEFAULT_ADDRESS);
     }
 
@@ -143,7 +143,7 @@ public class DepartmentResourceIntTest {
 		int databaseSizeBeforeUpdate = departmentRepository.findAll().size();
 
         // Update the department
-        department.setDepartmentName(UPDATED_DEPARTMENT_NAME);
+        department.setName(UPDATED_DEPARTMENT_NAME);
         department.setAddress(UPDATED_ADDRESS);
 
         restDepartmentMockMvc.perform(put("/api/departments")
@@ -155,7 +155,7 @@ public class DepartmentResourceIntTest {
         List<Department> departments = departmentRepository.findAll();
         assertThat(departments).hasSize(databaseSizeBeforeUpdate);
         Department testDepartment = departments.get(departments.size() - 1);
-        assertThat(testDepartment.getDepartmentName()).isEqualTo(UPDATED_DEPARTMENT_NAME);
+        assertThat(testDepartment.getName()).isEqualTo(UPDATED_DEPARTMENT_NAME);
         assertThat(testDepartment.getAddress()).isEqualTo(UPDATED_ADDRESS);
     }
 

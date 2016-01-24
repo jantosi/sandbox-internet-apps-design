@@ -13,11 +13,10 @@ import java.util.Objects;
 public class Department implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "department_name")
-    private String departmentName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "address")
     private String address;
@@ -30,12 +29,12 @@ public class Department implements Serializable {
         this.id = id;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public String getName() {
+        return name;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
@@ -67,7 +66,7 @@ public class Department implements Serializable {
     public String toString() {
         return "Department{" +
             "id=" + id +
-            ", departmentName='" + departmentName + "'" +
+            ", name='" + name + "'" +
             ", address='" + address + "'" +
             '}';
     }

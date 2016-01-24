@@ -1,4 +1,4 @@
-package pl.lodz.p.ftims.pai.service;
+package pl.lodz.p.ftims.pai.web.soap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -7,6 +7,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import pl.lodz.p.ftims.pai.repository.DepartmentRepository;
 import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
+import pl.lodz.p.ftims.pai.repository.TransitRepository;
 import pl.lodz.p.ftims.pai.repository.TransporterRepository;
 import pl.lodz.p.ftims.pai.web.soap.SynchronizationRequest;
 import pl.lodz.p.ftims.pai.web.soap.SynchronizationResponse;
@@ -24,6 +25,9 @@ public class SynchronizationProcessor {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private TransitRepository transitRepository;
+
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "synchronizationRequest")
     @ResponsePayload
     public SynchronizationResponse synchronize(@RequestPayload SynchronizationRequest request) {
@@ -34,6 +38,7 @@ public class SynchronizationProcessor {
         response.getTransporter().addAll(transporterRepository.findAll());
         response.setDepartment(departmentRepository.findAll());
         response.setEmployee(employeeRepository.findByDepartmentId(departmentId));
+        response.setTransit(transitRepository.findByDepartmentId(departmentId));
 
         return response;
     }

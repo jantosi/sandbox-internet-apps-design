@@ -71,6 +71,9 @@ public class SynchronizationSoapService {
         XMLStreamReader xsr = xif.createXMLStreamReader(sourceContent);
         xsr.nextTag(); // Advance to Envelope tag
         while (!xsr.getLocalName().equals("synchronizationResponse")) {
+            if(xsr.getLocalName().equals("Fault")){
+                throw new DbSynchronizationException(xsr.getText());
+            }
             xsr.nextTag();
         }
 

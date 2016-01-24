@@ -2,6 +2,7 @@ package pl.lodz.p.ftims.pai.web.soap;
 
 import pl.lodz.p.ftims.pai.domain.Department;
 import pl.lodz.p.ftims.pai.domain.Employee;
+import pl.lodz.p.ftims.pai.domain.Transit;
 import pl.lodz.p.ftims.pai.domain.Transporter;
 
 import javax.xml.bind.annotation.*;
@@ -12,7 +13,8 @@ import java.util.List;
 @XmlType(name = "", propOrder = {
     "transporter",
     "employee",
-    "department"
+    "department",
+    "transit"
 })
 @XmlRootElement(name = "synchronizationResponse")
 public class SynchronizationResponse {
@@ -25,6 +27,9 @@ public class SynchronizationResponse {
 
     @XmlElement(required = true)
     protected List<Department> department;
+
+    @XmlElement(required = true)
+    protected List<Transit> transit;
 
     public List<Transporter> getTransporter() {
         if (transporter == null) {
@@ -40,15 +45,22 @@ public class SynchronizationResponse {
         return employee;
     }
 
-    public void setEmployee(List<Employee> employee) {
-        this.employee = employee;
-    }
-
     public List<Department> getDepartment() {
         if(department == null){
             department = new ArrayList<>();
         }
         return department;
+    }
+
+    public List<Transit> getTransit() {
+        if(transit == null){
+            transit = new ArrayList<>();
+        }
+        return transit;
+    }
+
+    public void setEmployee(List<Employee> employee) {
+        this.employee = employee;
     }
 
     public void setDepartment(List<Department> department) {
@@ -57,5 +69,9 @@ public class SynchronizationResponse {
 
     public void setTransporter(List<Transporter> transporter) {
         this.transporter = transporter;
+    }
+
+    public void setTransit(List<Transit> transit) {
+        this.transit = transit;
     }
 }
