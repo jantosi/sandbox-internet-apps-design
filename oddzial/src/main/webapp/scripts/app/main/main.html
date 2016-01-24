@@ -7,9 +7,14 @@
             <h1 translate="main.title"> Welcome to Department!</h1>
             <p class="lead" translate="main.subtitle">This is your homepage</p>
 
+
+
             <div ng-switch="isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true" translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
                     You are logged in as user "{{account.login}}".
+                </div>
+                <div ng-switch-when="true">
+                <button ng-click="synchronize()" type="submit" class="btn btn-primary btn-sm">Synchronize!</button>
                 </div>
 
                 <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.authenticated">
