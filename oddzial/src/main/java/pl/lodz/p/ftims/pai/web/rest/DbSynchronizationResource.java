@@ -18,7 +18,7 @@ import java.util.Calendar;
  */
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/dbsync")
 public class DbSynchronizationResource {
 
     @Autowired

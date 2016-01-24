@@ -1,0 +1,64 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://osemka.com" targetNamespace="http://osemka.com" elementFormDefault="qualified">
+
+    <xs:element name="synchronizationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="department" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="synchronizationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="transporter" type="tns:transporter"/>
+                <xs:element name="employee" type="tns:employee"/>
+                <xs:element name="department" type="tns:department"/>
+                <xs:element name="transit" type="tns:transit"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="transit">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="1"/>
+            <xs:element name="type" type="tns:transitType"/>
+            <xs:element name="startTime" type="xs:dateTime"/>
+            <xs:element name="endTime" type="xs:dateTime"/>
+            <xs:element name="employee" type="tns:employee"/>
+            <xs:element name="transporter" type="tns:transporter"/>
+            <xs:element name="department" type="tns:department"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="employee">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="1"/>
+            <xs:element name="login" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="department">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+            <xs:element name="address" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="transporter">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="transitType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EXPRESS"/>
+            <xs:enumeration value="NORMAL"/>
+            <xs:enumeration value="BUDGET"/>
+            <xs:enumeration value="CUSTOM"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface TransporterRepository extends JpaRepository<Transporter,Long> {
 
+    @Query("SELECT id FROM Transporter")
+    List<Long> selectIds();
+
 }

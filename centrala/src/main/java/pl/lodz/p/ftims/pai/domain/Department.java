@@ -2,26 +2,37 @@ package pl.lodz.p.ftims.pai.domain;
 
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A Department.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "department", propOrder = {
+    "id",
+    "name",
+    "address"
+})
 @Entity
 @Table(name = "department")
 public class Department implements Serializable {
 
+    @XmlElement(required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @XmlElement(required = true)
     @Column(name = "name")
     private String name;
 
+    @XmlElement(required = true)
     @Column(name = "address")
     private String address;
 
+    @XmlTransient
     @Column(name = "city")
     private String city;
 
