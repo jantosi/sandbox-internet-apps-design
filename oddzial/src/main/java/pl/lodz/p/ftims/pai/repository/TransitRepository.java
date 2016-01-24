@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface TransitRepository extends JpaRepository<Transit,Long> {
 
+//    @Query("SELECT id FROM transit")
+//    List<Long> selectIds();
+
 }

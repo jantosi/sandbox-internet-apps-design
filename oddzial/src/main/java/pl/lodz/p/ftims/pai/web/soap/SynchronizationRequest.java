@@ -12,13 +12,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "synchronizationRequest")
 public class SynchronizationRequest {
 
-    protected long department;
+    protected int department;
 
-    public long getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(long value) {
+    public void setDepartment(int value) {
         this.department = value;
     }
 

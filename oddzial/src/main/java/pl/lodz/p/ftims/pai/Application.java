@@ -1,6 +1,7 @@
 package pl.lodz.p.ftims.pai;
 
 import pl.lodz.p.ftims.pai.config.Constants;
+import pl.lodz.p.ftims.pai.config.EnvironmentConfiguration;
 import pl.lodz.p.ftims.pai.config.JHipsterProperties;
 
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ import java.util.Collection;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = { MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
-@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class })
+@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class, EnvironmentConfiguration.class})
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);

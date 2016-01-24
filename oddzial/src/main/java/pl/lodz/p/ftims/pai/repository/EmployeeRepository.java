@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
+    @Query("SELECT id FROM Employee")
+    List<Long> selectIds();
+
 }

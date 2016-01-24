@@ -64,3 +64,11 @@ jhipster:
         contact:
         license:
         licenseUrl:
+
+environment:
+    department:
+        id: 2
+    headquarters:
+        domain: localhost
+        port: 8080
+        synchronization-endpoint: /ws/synchronization

@@ -1,4 +1,4 @@
-package pl.lodz.p.ftims.pai.web.soap;
+package pl.lodz.p.ftims.pai.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -8,9 +8,11 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import pl.lodz.p.ftims.pai.repository.DepartmentRepository;
 import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
 import pl.lodz.p.ftims.pai.repository.TransporterRepository;
+import pl.lodz.p.ftims.pai.web.soap.SynchronizationRequest;
+import pl.lodz.p.ftims.pai.web.soap.SynchronizationResponse;
 
 @Endpoint
-public class SynchronizationEndpoint {
+public class SynchronizationProcessor {
     private static final String NAMESPACE_URI = "http://osemka.com";
 
     @Autowired
@@ -24,7 +26,7 @@ public class SynchronizationEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "synchronizationRequest")
     @ResponsePayload
-    public SynchronizationResponse getCountry(@RequestPayload SynchronizationRequest request) {
+    public SynchronizationResponse synchronize(@RequestPayload SynchronizationRequest request) {
         long departmentId = request.getDepartment();
 
         SynchronizationResponse response = new SynchronizationResponse();
