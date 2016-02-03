@@ -10,13 +10,13 @@ import pl.lodz.p.ftims.pai.repository.DepartmentRepository;
 import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
 import pl.lodz.p.ftims.pai.repository.TransitRepository;
 import pl.lodz.p.ftims.pai.repository.TransporterRepository;
-import pl.lodz.p.ftims.pai.web.soap.SynchronizationResponse;
+import pl.lodz.p.ftims.pai.web.soap.SynchronizationBusinessDataResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class SynchronizationProcessor {
+public class SynchronizationBusinessDataProcessor {
 
     @Autowired
     private TransporterRepository transporterRepository;
@@ -30,15 +30,15 @@ public class SynchronizationProcessor {
     @Autowired
     private TransitRepository transitRepository;
 
-    public SynchronizationProcessor() {
+    public SynchronizationBusinessDataProcessor() {
     }
 
-    public void synchronize(SynchronizationResponse response) throws Exception {
+    public void synchronize(SynchronizationBusinessDataResponse response) throws Exception {
         deleteNotExisting(response);
         updateOrSaveNew(response);
     }
 
-    private void deleteNotExisting(SynchronizationResponse response) {
+    private void deleteNotExisting(SynchronizationBusinessDataResponse response) {
         final List<Long> newDepartmentIds = response.getDepartment().stream().map(Department::getId).collect(Collectors.toList());
         final List<Long> newTransporterIds = response.getTransporter().stream().map(Transporter::getId).collect(Collectors.toList());
         final List<Long> newEployeeIds = response.getEmployee().stream().map(Employee::getId).collect(Collectors.toList());
@@ -55,7 +55,7 @@ public class SynchronizationProcessor {
         oldTransitIds.stream().filter(oldId -> !transitIds.contains(oldId)).forEach(transitRepository::delete);
     }
 
-    private void updateOrSaveNew(SynchronizationResponse response){
+    private void updateOrSaveNew(SynchronizationBusinessDataResponse response){
         departmentRepository.save(response.getDepartment());
         transporterRepository.save(response.getTransporter());
         employeeRepository.save(response.getEmployee());

@@ -7,14 +7,23 @@ angular.module('spedycjaoddzialApp')
             $scope.isAuthenticated = Principal.isAuthenticated;
         });
 
-       $scope.synchronize = function synchronize() {
-        console.log("CALLING SYNCHRONIZE METHOD");
-        $http.post('dbsync/dbsync/headquarters').
+       $scope.synchronizeUsers = function synchronize() {
+        console.log("CALLING SYNCHRONIZE USERS METHOD");
+        $http.post('dbsync/users').
        	        success(function(data) {
        	            $scope.greeting = data;
        	        })
        }
+
+      $scope.synchronizeBusinessData = function synchronize() {
+       console.log("CALLING SYNCHRONIZE BUSINESS DATA METHOD");
+       $http.post('dbsync/businessdata').
+                success(function(data) {
+                    $scope.greeting = data;
+                })
+      }
     });
+
 
 
 

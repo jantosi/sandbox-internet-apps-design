@@ -16,8 +16,8 @@ import java.util.List;
     "department",
     "transit"
 })
-@XmlRootElement(name = "synchronizationResponse")
-public class SynchronizationResponse {
+@XmlRootElement(name = "synchronizationBusinessDataResponse")
+public class SynchronizationBusinessDataResponse {
 
     @XmlElement(required = true)
     protected List<Transporter> transporter;
