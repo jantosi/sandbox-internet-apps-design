@@ -14,4 +14,7 @@ public interface TransitRepository extends JpaRepository<Transit,Long> {
     @Query("SELECT t FROM Transit t WHERE t.departureDepartment.id = ?1")
     List<Transit> findByDepartmentId(long departmentId);
 
+    @Query("SELECT id FROM Transit")
+    List<Long> selectIds();
+
 }
