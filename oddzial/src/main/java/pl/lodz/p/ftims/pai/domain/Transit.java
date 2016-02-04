@@ -18,6 +18,7 @@ import pl.lodz.p.ftims.pai.domain.enumeration.TransitType;
 public class Transit implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Enumerated(EnumType.STRING)

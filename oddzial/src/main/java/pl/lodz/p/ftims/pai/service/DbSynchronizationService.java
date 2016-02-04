@@ -23,15 +23,11 @@ public class DbSynchronizationService {
     private SynchronizationUsersSoapService synchronizationUsersSoapService;
 
     @Autowired
-    private SynchronizationBusinessDataProcessor synchronizationBusinessDataProcessor;
-
-    @Autowired
     private SynchronizationUsersProcessor synchronizationUsersProcessor;
 
     public void startDatabaseSyncBusinessData() throws DbSynchronizationException, InterruptedException {
         try {
             SynchronizationBusinessDataResponse synchronizationBusinessDataResponse = synchronizationBusinessDataSoapService.sendSynchronizationRequest();
-            synchronizationBusinessDataProcessor.synchronize(synchronizationBusinessDataResponse);
         } catch (Exception e) {
             LOG.error("An error has occurred during synchronization of the business data", e);
             TimeUnit.MINUTES.sleep(2);

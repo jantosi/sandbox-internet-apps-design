@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface DepartmentRepository extends JpaRepository<Department,Long> {
 
+    @Query("SELECT id FROM Department")
+    List<Long> selectIds();
+
 }

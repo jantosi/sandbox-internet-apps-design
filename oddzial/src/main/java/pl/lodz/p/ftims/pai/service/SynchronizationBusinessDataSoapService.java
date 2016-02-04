@@ -4,16 +4,27 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.Document;
 import pl.lodz.p.ftims.pai.config.EnvironmentConfiguration;
+import pl.lodz.p.ftims.pai.repository.DepartmentRepository;
+import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
+import pl.lodz.p.ftims.pai.repository.TransitRepository;
+import pl.lodz.p.ftims.pai.repository.TransporterRepository;
+import pl.lodz.p.ftims.pai.web.soap.SynchronizationBusinessDataRequest;
 import pl.lodz.p.ftims.pai.web.soap.SynchronizationBusinessDataResponse;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.soap.*;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.Source;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.StringWriter;
 
 /**
  * Created by <a href="mailto:171131@edu.p.lodz.pl">Andrzej Lisowski</a> on 24.01.16.
@@ -24,6 +35,18 @@ public class SynchronizationBusinessDataSoapService {
     private static final String XML_PREFIX = "gs";
 
     private static final Logger LOG = LoggerFactory.getLogger(SynchronizationBusinessDataSoapService.class);
+
+    @Autowired
+    private TransporterRepository transporterRepository;
+
+    @Autowired
+    private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private TransitRepository transitRepository;
 
     @Autowired
     private EnvironmentConfiguration environmentConfiguration;
@@ -49,9 +72,17 @@ public class SynchronizationBusinessDataSoapService {
         envelope.addNamespaceDeclaration(XML_PREFIX, SERVER_URI);
 
         SOAPBody soapBody = envelope.getBody();
-        SOAPElement soapBodyElem = soapBody.addChildElement("synchronizationBusinessDataRequest", XML_PREFIX);
-        SOAPElement soapBodyElem1 = soapBodyElem.addChildElement("department", XML_PREFIX);
-        soapBodyElem1.addTextNode(String.valueOf(environmentConfiguration.getDepartmentId()));
+
+        JAXBContext jc = JAXBContext.newInstance(SynchronizationBusinessDataRequest.class);
+        SynchronizationBusinessDataRequest request = new SynchronizationBusinessDataRequest();
+        request.setEmployee(employeeRepository.findAll());
+        request.setDepartment(departmentRepository.findAll());
+        request.setTransit(transitRepository.findAll());
+        request.setTransporter(transporterRepository.findAll());
+        Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+        final Marshaller marshaller = jc.createMarshaller();
+        marshaller.marshal(request, document);
+        soapBody.addDocument(document);
 
         soapMessage.saveChanges();
 
