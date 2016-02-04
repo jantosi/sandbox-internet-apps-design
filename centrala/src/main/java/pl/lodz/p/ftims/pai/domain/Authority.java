@@ -7,15 +7,24 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
 /**
  * An authority (a security role) used by Spring Security.
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "authority", propOrder = {
+    "name",
+})
 @Entity
 @Table(name = "jhi_authority")
 public class Authority implements Serializable {
 
+    @XmlElement(required = true)
     @NotNull
     @Size(min = 0, max = 50)
     @Id

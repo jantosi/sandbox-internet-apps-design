@@ -15,6 +15,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 @Configuration
 public class SoapConfig extends WsConfigurerAdapter {
+
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -23,18 +24,33 @@ public class SoapConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    @Bean(name = "synchronization")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema transportersSchema) {
+    @Bean(name = "userssynchronization")
+    public DefaultWsdl11Definition usersSynchronization(XsdSchema usersSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("SynchronizationPort");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://osemka.com");
-        wsdl11Definition.setSchema(transportersSchema);
+        wsdl11Definition.setSchema(usersSchema);
         return wsdl11Definition;
     }
 
     @Bean
-    public XsdSchema transportersSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("synch/synchronization.xsd"));
+    public XsdSchema usersSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("synch/userssynchronization.xsd"));
+    }
+
+    @Bean(name = "businessdatasynchronization")
+    public DefaultWsdl11Definition businessDataSynchronization(XsdSchema businessDataSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("SynchronizationPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://osemka.com");
+        wsdl11Definition.setSchema(businessDataSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema businessDataSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("synch/businessdatasynchronization.xsd"));
     }
 }

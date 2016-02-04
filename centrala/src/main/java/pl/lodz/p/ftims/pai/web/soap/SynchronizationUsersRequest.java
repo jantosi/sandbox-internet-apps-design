@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "department"
 })
-@XmlRootElement(name = "synchronizationRequest")
-public class SynchronizationRequest {
+@XmlRootElement(name = "synchronizationUsersRequest")
+public class SynchronizationUsersRequest {
 
     protected long department;
 

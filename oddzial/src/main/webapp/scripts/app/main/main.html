@@ -14,7 +14,11 @@
                     You are logged in as user "{{account.login}}".
                 </div>
                 <div ng-switch-when="true">
-                <button ng-click="synchronize()" type="submit" class="btn btn-primary btn-sm">Synchronize!</button>
+                    <button ng-click="synchronizeUsers()" type="submit" class="btn btn-primary btn-sm">Synchronize users from headquarters!</button>
+                </div>
+
+                <div ng-switch-when="true">
+                    <button ng-click="synchronizeBusinessData()" type="submit" class="btn btn-primary btn-sm">Synchronize business data with headquarters!</button>
                 </div>
 
                 <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.authenticated">

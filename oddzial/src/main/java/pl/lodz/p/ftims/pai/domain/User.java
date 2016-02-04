@@ -7,6 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +20,7 @@ import java.time.ZonedDateTime;
  */
 @Entity
 @Table(name = "jhi_user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User extends AbstractAuditingEntity implements Serializable {
 
     @Id
@@ -31,7 +35,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60) 
+    @Size(min = 60, max = 60)
     @Column(name = "password_hash",length = 60)
     private String password;
 
@@ -65,10 +69,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String resetKey;
 
     @Column(name = "reset_date", nullable = true)
+    @XmlTransient
     private ZonedDateTime resetDate = null;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "jhi_user_authority",
         joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},

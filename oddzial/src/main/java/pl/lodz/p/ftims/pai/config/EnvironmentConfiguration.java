@@ -18,7 +18,10 @@ public class EnvironmentConfiguration {
     public static class Headquarters {
 
         @NotNull
-        private String synchronizationEndpoint;
+        private String synchronizationUsersEndpoint;
+
+        @NotNull
+        private String synchronizationBusinessDataEndpoint;
 
         @NotNull
         private String domain;
@@ -26,8 +29,12 @@ public class EnvironmentConfiguration {
         @NotNull
         private String port;
 
-        public void setSynchronizationEndpoint(String synchronizationEndpoint) {
-            this.synchronizationEndpoint = synchronizationEndpoint;
+        public void setSynchronizationUsersEndpoint(String synchronizationUsersEndpoint) {
+            this.synchronizationUsersEndpoint = synchronizationUsersEndpoint;
+        }
+
+        public void setSynchronizationBusinessDataEndpoint(String synchronizationBusinessDataEndpoint) {
+            this.synchronizationBusinessDataEndpoint = synchronizationBusinessDataEndpoint;
         }
 
         public void setDomain(String domain) {
@@ -53,8 +60,12 @@ public class EnvironmentConfiguration {
         return department.id;
     }
 
-    public String getHeadquartersSynchronizationEndpoint(){
-        return headquarters.synchronizationEndpoint;
+    public String getHeadquartersSynchronizationBusinessDataEndpoint(){
+        return headquarters.synchronizationBusinessDataEndpoint;
+    }
+
+    public String getHeadquartersSynchronizationUsersEndpoint(){
+        return headquarters.synchronizationUsersEndpoint;
     }
 
     public String getHeadquartersDomain(){

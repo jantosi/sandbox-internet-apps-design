@@ -77,4 +77,5 @@ environment:
     headquarters:
         domain: localhost
         port: 8080
-        synchronization-endpoint: /ws/synchronization
+        synchronization-users-endpoint: /ws/userssynchronization
+        synchronization-business-data-endpoint: /ws/businessdatasynchronization

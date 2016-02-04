@@ -15,6 +15,9 @@ import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Base abstract class for entities which will hold definitions for created, last modified by and created,
@@ -23,6 +26,7 @@ import javax.validation.constraints.NotNull;
 @MappedSuperclass
 @Audited
 @EntityListeners(AuditingEntityListener.class)
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,6 +41,7 @@ public abstract class AbstractAuditingEntity implements Serializable {
     @NotNull
     @Column(name = "created_date", nullable = false)
     @JsonIgnore
+    @XmlTransient
     private ZonedDateTime createdDate = ZonedDateTime.now();
 
     @LastModifiedBy
@@ -47,6 +52,7 @@ public abstract class AbstractAuditingEntity implements Serializable {
     @LastModifiedDate
     @Column(name = "last_modified_date")
     @JsonIgnore
+    @XmlTransient
     private ZonedDateTime lastModifiedDate = ZonedDateTime.now();
 
     public String getCreatedBy() {

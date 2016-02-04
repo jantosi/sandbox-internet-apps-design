@@ -9,11 +9,9 @@ import pl.lodz.p.ftims.pai.repository.DepartmentRepository;
 import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
 import pl.lodz.p.ftims.pai.repository.TransitRepository;
 import pl.lodz.p.ftims.pai.repository.TransporterRepository;
-import pl.lodz.p.ftims.pai.web.soap.SynchronizationRequest;
-import pl.lodz.p.ftims.pai.web.soap.SynchronizationResponse;
 
 @Endpoint
-public class SynchronizationProcessor {
+public class SynchronizationBusinessDataProcessor {
     private static final String NAMESPACE_URI = "http://osemka.com";
 
     @Autowired
@@ -28,12 +26,12 @@ public class SynchronizationProcessor {
     @Autowired
     private TransitRepository transitRepository;
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "synchronizationRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "synchronizationBusinessDataRequest")
     @ResponsePayload
-    public SynchronizationResponse synchronize(@RequestPayload SynchronizationRequest request) {
+    public SynchronizationBusinessDataResponse synchronize(@RequestPayload SynchronizationBusinessDataRequest request) {
         long departmentId = request.getDepartment();
 
-        SynchronizationResponse response = new SynchronizationResponse();
+        SynchronizationBusinessDataResponse response = new SynchronizationBusinessDataResponse();
 
         response.getTransporter().addAll(transporterRepository.findAll());
         response.setDepartment(departmentRepository.findAll());
