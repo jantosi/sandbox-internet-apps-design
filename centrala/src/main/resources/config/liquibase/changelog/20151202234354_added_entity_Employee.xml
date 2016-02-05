@@ -21,8 +21,8 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="dataSourceId" type="bigint"/>
-            <column name="sourceDepartmentId" type="bigint"/>
+            <column name="data_source_id" type="bigint"/>
+            <column name="source_department_id" type="bigint"/>
             <column name="login" type="varchar(255)"/>
             <column name="position" type="varchar(255)"/>
             <column name="department_id" type="bigint"/>
