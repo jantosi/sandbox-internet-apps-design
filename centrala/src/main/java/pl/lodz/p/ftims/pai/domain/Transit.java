@@ -14,6 +14,8 @@ import java.util.Objects;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "transit", propOrder = {
     "id",
+    "dataSourceId",
+    "sourceDepartmentId",
     "type",
     "startTime",
     "endTime",
@@ -29,6 +31,14 @@ public class Transit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @XmlElement(required = true)
+    @Column(name = "dataSourceId")
+    private Long dataSourceId;
+
+    @XmlElement(required = true)
+    @Column(name = "sourceDepartmentId")
+    private Long sourceDepartmentId;
 
     @XmlElement(required = true)
     @Enumerated(EnumType.STRING)
@@ -125,6 +135,22 @@ public class Transit implements Serializable {
 
     public void setDestinationDepartment(Department department) {
         this.destinationDepartment = department;
+    }
+
+    public Long getSourceDepartmentId() {
+        return sourceDepartmentId;
+    }
+
+    public void setSourceDepartmentId(Long sourceDepartmentId) {
+        this.sourceDepartmentId = sourceDepartmentId;
+    }
+
+    public Long getDataSourceId() {
+        return dataSourceId;
+    }
+
+    public void setDataSourceId(Long dataSourceId) {
+        this.dataSourceId = dataSourceId;
     }
 
     @Override

@@ -21,6 +21,8 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="dataSourceId" type="bigint"/>
+            <column name="sourceDepartmentId" type="bigint"/>
             <column name="purchase_time" type="timestamp"/>
             <column name="withdrawal_time" type="timestamp"/>
             <column name="name" type="varchar(255)"/>
@@ -33,7 +35,7 @@
 
         <dropDefaultValue tableName="transporter" columnName="withdrawal_time" columnDataType="datetime"/>
 
-        
+
         <addForeignKeyConstraint baseColumnNames="location_id"
                                  baseTableName="transporter"
                                  constraintName="fk_transporter_location_id"

@@ -14,6 +14,8 @@ import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
 import pl.lodz.p.ftims.pai.repository.TransitRepository;
 import pl.lodz.p.ftims.pai.repository.TransporterRepository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,13 +67,30 @@ public class SynchronizationBusinessDataProcessor {
         final List<Long> oldEmployeeIds = employeeRepository.selectIds();
         final List<Long> oldTransitIds = transitRepository.selectIds();
 
-        oldDepartmentIds.stream().filter(oldId -> !newDepartmentIds.contains(oldId)).forEach(departmentRepository::delete);
-        oldTransporterIds.stream().filter(oldId -> !newTransporterIds.contains(oldId)).forEach(transporterRepository::delete);
-        oldEmployeeIds.stream().filter(oldId -> !newEployeeIds.contains(oldId)).forEach(employeeRepository::delete);
-        oldTransitIds.stream().filter(oldId -> !transitIds.contains(oldId)).forEach(transitRepository::delete);
+//        oldDepartmentIds.stream().filter(oldId -> !newDepartmentIds.contains(oldId)).forEach(departmentRepository::delete);
+//        oldTransporterIds.stream().filter(oldId -> !newTransporterIds.contains(oldId)).forEach(transporterRepository::delete);
+//        oldEmployeeIds.stream().filter(oldId -> !newEployeeIds.contains(oldId)).forEach(employeeRepository::delete);
+//        oldTransitIds.stream().filter(oldId -> !transitIds.contains(oldId)).forEach(transitRepository::delete);
     }
 
     private void updateOrSaveNew(SynchronizationBusinessDataRequest request){
+        final Long departmentId = request.getDepartmentId();
+        for(Department d : request.getDepartment()) {
+            d.setDataSourceId(departmentId);
+            d.setDataSourceId(d.getId());
+        }
+        for(Transporter t : request.getTransporter()){
+            t.setDataSourceId(departmentId);
+            t.setDataSourceId(t.getId());
+        }
+        for(Employee e : request.getEmployee()){
+            e.setDataSourceId(departmentId);
+            e.setDataSourceId(e.getId());
+        }
+        for(Transit t : request.getTransit()){
+            t.setDataSourceId(departmentId);
+            t.setDataSourceId(t.getId());
+        }
         departmentRepository.save(request.getDepartment());
         transporterRepository.save(request.getTransporter());
         employeeRepository.save(request.getEmployee());

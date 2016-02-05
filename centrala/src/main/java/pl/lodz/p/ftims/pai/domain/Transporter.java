@@ -12,6 +12,8 @@ import java.util.Objects;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "transporter", propOrder = {
     "id",
+    "dataSourceId",
+    "sourceDepartmentId"
 })
 @Entity
 @Table(name = "transporter")
@@ -21,6 +23,14 @@ public class Transporter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @XmlElement(required = true)
+    @Column(name = "dataSourceId")
+    private Long dataSourceId;
+
+    @XmlElement(required = true)
+    @Column(name = "sourceDepartmentId")
+    private Long sourceDepartmentId;
 
     @XmlTransient
     @Column(name = "purchase_time")
@@ -89,6 +99,22 @@ public class Transporter implements Serializable {
 
     public void setTransporterInfo(TransporterInfo transporterInfo) {
         this.transporterInfo = transporterInfo;
+    }
+
+    public Long getSourceDepartmentId() {
+        return sourceDepartmentId;
+    }
+
+    public void setSourceDepartmentId(Long sourceDepartmentId) {
+        this.sourceDepartmentId = sourceDepartmentId;
+    }
+
+    public Long getDataSourceId() {
+        return dataSourceId;
+    }
+
+    public void setDataSourceId(Long dataSourceId) {
+        this.dataSourceId = dataSourceId;
     }
 
     @Override

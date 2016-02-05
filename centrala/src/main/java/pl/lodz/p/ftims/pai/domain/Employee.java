@@ -12,6 +12,8 @@ import java.util.Objects;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "employee", propOrder = {
     "id",
+    "dataSourceId",
+    "sourceDepartmentId",
     "login",
 })
 @Entity
@@ -22,6 +24,14 @@ public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @XmlElement(required = true)
+    @Column(name = "dataSourceId")
+    private Long dataSourceId;
+
+    @XmlElement(required = true)
+    @Column(name = "sourceDepartmentId")
+    private Long sourceDepartmentId;
 
     @XmlElement(required = true)
     @Column(name = "login")
@@ -78,6 +88,22 @@ public class Employee implements Serializable {
 
     public void setEmployeePersonalData(EmployeePersonalData employeePersonalData) {
         this.employeePersonalData = employeePersonalData;
+    }
+
+    public Long getDataSourceId() {
+        return dataSourceId;
+    }
+
+    public void setDataSourceId(Long dataSourceId) {
+        this.dataSourceId = dataSourceId;
+    }
+
+    public Long getSourceDepartmentId() {
+        return sourceDepartmentId;
+    }
+
+    public void setSourceDepartmentId(Long sourceDepartmentId) {
+        this.sourceDepartmentId = sourceDepartmentId;
     }
 
     @Override
