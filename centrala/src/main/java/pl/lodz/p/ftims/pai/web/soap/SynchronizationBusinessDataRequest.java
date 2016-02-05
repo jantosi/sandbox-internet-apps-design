@@ -11,6 +11,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "departmentId",
     "transporter",
     "employee",
     "department",
@@ -18,6 +19,9 @@ import java.util.List;
 })
 @XmlRootElement(name = "synchronizationBusinessDataRequest")
 public class SynchronizationBusinessDataRequest {
+
+    @XmlElement
+    protected Long departmentId;
 
     @XmlElement(required = true)
     protected List<Transporter> transporter;
@@ -73,6 +77,14 @@ public class SynchronizationBusinessDataRequest {
 
     public void setTransit(List<Transit> transit) {
         this.transit = transit;
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
     }
 }
 
