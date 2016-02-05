@@ -8,8 +8,9 @@ import pl.lodz.p.ftims.pai.web.soap.DoubleKey;
 public interface DoubleKeyed {
     Long getId();
     Long getDataSourceId();
+    Long getSourceDepartmentId();
 
     default DoubleKey key(){
-        return new DoubleKey(getDataSourceId(), getId());
+        return new DoubleKey(getId(), getDataSourceId(), getSourceDepartmentId());
     }
 }

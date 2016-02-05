@@ -30,6 +30,12 @@
       "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Http"
     },
     {
+      "name": "jhipster.http.cache",
+      "sourceMethod": "getCache()",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Http",
+      "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Http$Cache"
+    },
+    {
       "name": "jhipster.mail",
       "sourceMethod": "getMail()",
       "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties",
@@ -42,10 +48,46 @@
       "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics"
     },
     {
+      "name": "jhipster.metrics.graphite",
+      "sourceMethod": "getGraphite()",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics",
+      "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Graphite"
+    },
+    {
+      "name": "jhipster.metrics.jmx",
+      "sourceMethod": "getJmx()",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics",
+      "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Jmx"
+    },
+    {
+      "name": "jhipster.metrics.spark",
+      "sourceMethod": "getSpark()",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics",
+      "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Spark"
+    },
+    {
       "name": "jhipster.security",
       "sourceMethod": "getSecurity()",
       "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties",
       "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security"
+    },
+    {
+      "name": "jhipster.security.authentication",
+      "sourceMethod": "getAuthentication()",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security",
+      "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security$Authentication"
+    },
+    {
+      "name": "jhipster.security.authentication.xauth",
+      "sourceMethod": "getXauth()",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security$Authentication",
+      "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security$Authentication$Xauth"
+    },
+    {
+      "name": "jhipster.security.rememberme",
+      "sourceMethod": "getRememberme()",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security",
+      "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security$Rememberme"
     },
     {
       "name": "jhipster.swagger",
@@ -60,9 +102,173 @@
     }
   ],
   "hints": [],
-  "properties": [{
-    "name": "sync.departments-to-sync",
-    "sourceType": "pl.lodz.p.ftims.pai.service.UserService",
-    "type": "java.util.List<java.lang.String>"
-  }]
+  "properties": [
+    {
+      "defaultValue": 2,
+      "name": "jhipster.async.core-pool-size",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Async",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": 50,
+      "name": "jhipster.async.max-pool-size",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Async",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": 10000,
+      "name": "jhipster.async.queue-capacity",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Async",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": 3600,
+      "name": "jhipster.cache.time-to-live-seconds",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Cache",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": true,
+      "name": "jhipster.datasource.cache-prep-stmts",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Datasource",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": 250,
+      "name": "jhipster.datasource.prep-stmt-cache-size",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Datasource",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": 2048,
+      "name": "jhipster.datasource.prep-stmt-cache-sql-limit",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Datasource",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": true,
+      "name": "jhipster.datasource.use-server-prep-stmts",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Datasource",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": 31,
+      "name": "jhipster.http.cache.time-to-live-in-days",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Http$Cache",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": "spedycjacentrala@localhost",
+      "name": "jhipster.mail.from",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Mail",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": false,
+      "name": "jhipster.metrics.graphite.enabled",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Graphite",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": "localhost",
+      "name": "jhipster.metrics.graphite.host",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Graphite",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": 2003,
+      "name": "jhipster.metrics.graphite.port",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Graphite",
+      "type": "java.lang.Integer"
+    },
+    {
+      "defaultValue": "spedycjacentrala",
+      "name": "jhipster.metrics.graphite.prefix",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Graphite",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": true,
+      "name": "jhipster.metrics.jmx.enabled",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Jmx",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": false,
+      "name": "jhipster.metrics.spark.enabled",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Spark",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": "localhost",
+      "name": "jhipster.metrics.spark.host",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Spark",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": 9999,
+      "name": "jhipster.metrics.spark.port",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Metrics$Spark",
+      "type": "java.lang.Integer"
+    },
+    {
+      "name": "jhipster.security.authentication.xauth.secret",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security$Authentication$Xauth",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": 1800,
+      "name": "jhipster.security.authentication.xauth.token-validity-in-seconds",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security$Authentication$Xauth",
+      "type": "java.lang.Integer"
+    },
+    {
+      "name": "jhipster.security.rememberme.key",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Security$Rememberme",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "jhipster.swagger.contact",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": "spedycjacentrala API documentation",
+      "name": "jhipster.swagger.description",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "jhipster.swagger.license",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "jhipster.swagger.license-url",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "jhipster.swagger.terms-of-service-url",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": "spedycjacentrala API",
+      "name": "jhipster.swagger.title",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": "0.0.1",
+      "name": "jhipster.swagger.version",
+      "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "sync.departments-to-sync",
+      "sourceType": "pl.lodz.p.ftims.pai.service.UserService",
+      "type": "java.util.List<java.lang.String>"
+    }
+  ]
 }

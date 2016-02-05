@@ -3,7 +3,6 @@ package pl.lodz.p.ftims.pai.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import pl.lodz.p.ftims.pai.domain.Transit;
-import pl.lodz.p.ftims.pai.web.soap.DoubleKey;
 
 import java.util.List;
 
@@ -21,8 +20,8 @@ public interface TransitRepository extends JpaRepository<Transit,Long> {
     @Query("SELECT dataSourceId FROM Transit")
     List<Long> selectDataSourceIds();
 
-    @Query("SELECT id,dataSourceId FROM Transit")
-    List<DoubleKey> selectDoubleKeys();
+    @Query("SELECT id,dataSourceId,sourceDepartmentId FROM Transit")
+    List<Object[]> selectDoubleKeys();
 
 
 }

@@ -6,13 +6,8 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import pl.lodz.p.ftims.pai.domain.*;
-import pl.lodz.p.ftims.pai.repository.DepartmentRepository;
-import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
-import pl.lodz.p.ftims.pai.repository.TransitRepository;
-import pl.lodz.p.ftims.pai.repository.TransporterRepository;
+import pl.lodz.p.ftims.pai.repository.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,22 +49,60 @@ public class SynchronizationBusinessDataProcessor {
 
     private void deleteNotExisting(SynchronizationBusinessDataRequest request) {
         final Long departmentId = request.getDepartmentId();
+        for(Department d : request.getDepartment()) {
+            d.setSourceDepartmentId(departmentId);
+            d.setDataSourceId(d.getId());
+        }
+        for(Transporter t : request.getTransporter()){
+            t.setSourceDepartmentId(departmentId);
+            t.setDataSourceId(t.getId());
+        }
+        for(Employee e : request.getEmployee()){
+            e.setSourceDepartmentId(departmentId);
+            e.setDataSourceId(e.getId());
+        }
+        for(Transit t : request.getTransit()){
+            t.setSourceDepartmentId(departmentId);
+            t.setDataSourceId(t.getId());
+        }
 
         List<DoubleKey> newDepartmentKeys = request.getDepartment().stream().map(DoubleKeyed::key).collect(Collectors.toList());
         List<DoubleKey> newTransporterKeys = request.getTransporter().stream().map(DoubleKeyed::key).collect(Collectors.toList());
         List<DoubleKey> newEmployeeKeys = request.getEmployee().stream().map(DoubleKeyed::key).collect(Collectors.toList());
         List<DoubleKey> newTransitKeys = request.getTransit().stream().map(DoubleKeyed::key).collect(Collectors.toList());
 
-        List<DoubleKey> oldDepartmentKeys = departmentRepository.selectDoubleKeys();
-        List<DoubleKey> oldTransporterKeys = transporterRepository.selectDoubleKeys();
-        List<DoubleKey> oldEmployeeKeys = employeeRepository.selectDoubleKeys();
-        List<DoubleKey> oldTransitKeys = transitRepository.selectDoubleKeys();
+        List<Object[]> oldDepartmentKeysObj = departmentRepository.selectDoubleKeys();
+        List<Object[]> oldTransporterKeysObj = transporterRepository.selectDoubleKeys();
+        List<Object[]> oldEmployeeKeysObj = employeeRepository.selectDoubleKeys();
+        List<Object[]> oldTransitKeysObj = transitRepository.selectDoubleKeys();
 
-        oldDepartmentKeys.stream().filter($ -> !newDepartmentKeys.contains($)).forEach($ -> departmentRepository.delete($.id));
-        oldTransporterKeys.stream().filter($ -> !newTransporterKeys.contains($)).forEach($ -> transporterRepository.delete($.id));
-        oldEmployeeKeys.stream().filter($ -> !newEmployeeKeys.contains($)).forEach($ -> employeeRepository.delete($.id));
-        oldTransitKeys.stream().filter($ -> !newTransitKeys.contains($)).forEach($ -> transitRepository.delete($.id));
+        DoubleKeyJpaConverter converter = new DoubleKeyJpaConverter();
+        List<DoubleKey> oldDepartmentKeys = oldDepartmentKeysObj.stream().map(converter::convertToEntityAttribute).collect(Collectors.toList());
+        List<DoubleKey> oldTransporterKeys = oldTransporterKeysObj.stream().map(converter::convertToEntityAttribute).collect(Collectors.toList());
+        List<DoubleKey> oldEmployeeKeys = oldEmployeeKeysObj.stream().map(converter::convertToEntityAttribute).collect(Collectors.toList());
+        List<DoubleKey> oldTransitKeys = oldTransitKeysObj.stream().map(converter::convertToEntityAttribute).collect(Collectors.toList());
 
+        oldDepartmentKeys.stream()
+            .filter(old -> !newDepartmentKeys.stream().anyMatch($ -> oldKeyMatchesNew(old, $)))
+            .forEach(old -> departmentRepository.delete(old.id));
+
+        oldTransporterKeys.stream()
+            .filter(old -> !newTransporterKeys.stream().anyMatch($ -> oldKeyMatchesNew(old, $)))
+            .forEach(old -> transporterRepository.delete(old.id));
+
+        oldEmployeeKeys.stream()
+            .filter(old -> !newEmployeeKeys.stream().anyMatch($ -> oldKeyMatchesNew(old, $)))
+            .forEach(old -> employeeRepository.delete(old.id));
+
+        oldTransitKeys.stream()
+            .filter(old -> !newTransitKeys.stream().anyMatch($ -> oldKeyMatchesNew(old, $)))
+            .forEach(old -> transitRepository.delete(old.id));
+
+    }
+
+    private boolean oldKeyMatchesNew(DoubleKey oldKey, DoubleKey newKey) {
+        return newKey.dataSourceId.equals(oldKey.dataSourceId)
+            && newKey.sourceDepartmentId.equals(oldKey.sourceDepartmentId);
     }
 
     private void updateOrSaveNew(SynchronizationBusinessDataRequest request){

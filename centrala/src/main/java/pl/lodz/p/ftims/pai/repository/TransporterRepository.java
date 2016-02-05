@@ -3,7 +3,6 @@ package pl.lodz.p.ftims.pai.repository;
 import pl.lodz.p.ftims.pai.domain.Transporter;
 
 import org.springframework.data.jpa.repository.*;
-import pl.lodz.p.ftims.pai.web.soap.DoubleKey;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface TransporterRepository extends JpaRepository<Transporter,Long> {
     List<Long> selectDataSourceIds();
 
 
-    @Query("SELECT id,dataSourceId FROM Transporter")
-    List<DoubleKey> selectDoubleKeys();
+    @Query("SELECT id,dataSourceId,sourceDepartmentId FROM Transporter")
+    List<Object[]> selectDoubleKeys();
 
 }
