@@ -22,7 +22,7 @@ spring:
         driver-class-name: org.h2.jdbcx.JdbcDataSource
         url: jdbc:h2:mem:spedycjacentrala;DB_CLOSE_DELAY=-1
         name:
-        username: 
+        username:
         password:
     jpa:
         database-platform: pl.lodz.p.ftims.pai.domain.util.FixedH2Dialect
@@ -44,6 +44,18 @@ liquibase:
 
 server:
     port: 8080
+
+
+
+# ===================================================================
+# App-specific Config (headquarters)
+# ===================================================================
+
+sync:
+    departmentsToSync:
+        - http://localhost:18080/dbsync/users
+
+
 
 # ===================================================================
 # JHipster specific properties

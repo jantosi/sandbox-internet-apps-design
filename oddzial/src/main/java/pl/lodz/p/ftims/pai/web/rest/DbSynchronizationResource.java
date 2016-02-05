@@ -1,6 +1,8 @@
 package pl.lodz.p.ftims.pai.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,6 +26,8 @@ import java.util.Calendar;
     @Autowired
     private DbSynchronizationService dbSynchronizationService;
 
+    private final Logger log = LoggerFactory.getLogger(DbSynchronizationResource.class);
+
     @RequestMapping(value="/businessdata", method=RequestMethod.POST, produces= MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<DbSynchronizationResponse> startDatabaseSyncBusinessData() throws URISyntaxException{
@@ -42,6 +46,7 @@ import java.util.Calendar;
     @RequestMapping(value="/users", method=RequestMethod.POST, produces= MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<DbSynchronizationResponse> startDatabaseSyncUsers() throws URISyntaxException{
+        log.info("Received user synchronization request.");
         try {
             dbSynchronizationService.startDatabaseSyncUsers();
             DbSynchronizationResponse response = new DbSynchronizationResponse();

@@ -35,11 +35,14 @@ pl/lodz/p/ftims/pai/domain/util/JSR310DateConverters$DateToZonedDateTimeConverte
 pl/lodz/p/ftims/pai/aop/logging/LoggingAspect.class
 pl/lodz/p/ftims/pai/config/JHipsterProperties.class
 pl/lodz/p/ftims/pai/security/AuthoritiesConstants.class
+pl/lodz/p/ftims/pai/web/soap/SynchronizationBusinessDataResponse.class
 pl/lodz/p/ftims/pai/config/ThymeleafConfiguration.class
 pl/lodz/p/ftims/pai/repository/CustomAuditEventRepository$1.class
 pl/lodz/p/ftims/pai/service/UserService.class
 META-INF/spring-configuration-metadata.json
 pl/lodz/p/ftims/pai/config/MetricsConfiguration$SparkRegistry.class
+pl/lodz/p/ftims/pai/web/soap/package-info.class
+pl/lodz/p/ftims/pai/web/soap/SynchronizationBusinessDataRequest.class
 pl/lodz/p/ftims/pai/repository/EmployeeRepository.class
 pl/lodz/p/ftims/pai/domain/util/JSR310DateTimeSerializer.class
 pl/lodz/p/ftims/pai/domain/Employee.class
@@ -51,6 +54,7 @@ pl/lodz/p/ftims/pai/web/rest/UserXAuthTokenController.class
 pl/lodz/p/ftims/pai/repository/EmployeePersonalDataRepository.class
 pl/lodz/p/ftims/pai/config/liquibase/AsyncSpringLiquibase.class
 pl/lodz/p/ftims/pai/security/SecurityUtils.class
+pl/lodz/p/ftims/pai/web/soap/SynchronizationUsersRequest.class
 pl/lodz/p/ftims/pai/domain/Authority.class
 pl/lodz/p/ftims/pai/web/rest/errors/FieldErrorDTO.class
 pl/lodz/p/ftims/pai/config/SecurityConfiguration.class
@@ -67,7 +71,9 @@ pl/lodz/p/ftims/pai/web/rest/UserResource.class
 pl/lodz/p/ftims/pai/config/Constants.class
 pl/lodz/p/ftims/pai/repository/PersistenceAuditEventRepository.class
 pl/lodz/p/ftims/pai/web/filter/StaticResourcesProductionFilter.class
+pl/lodz/p/ftims/pai/web/soap/SynchronizationUsersResponse.class
 pl/lodz/p/ftims/pai/domain/Transit.class
+pl/lodz/p/ftims/pai/web/soap/SynchronizationUsersProcessor.class
 pl/lodz/p/ftims/pai/security/xauth/XAuthTokenFilter.class
 pl/lodz/p/ftims/pai/security/xauth/TokenProvider.class
 pl/lodz/p/ftims/pai/web/rest/dto/ManagedUserDTO.class
@@ -87,9 +93,11 @@ pl/lodz/p/ftims/pai/web/rest/AccountResource.class
 pl/lodz/p/ftims/pai/config/JHipsterProperties$Metrics.class
 pl/lodz/p/ftims/pai/config/JHipsterProperties$Security$Authentication$Xauth.class
 pl/lodz/p/ftims/pai/security/xauth/Token.class
+pl/lodz/p/ftims/pai/service/model/DepartmentSyncRequest.class
 pl/lodz/p/ftims/pai/web/rest/errors/ErrorDTO.class
 pl/lodz/p/ftims/pai/domain/util/JSR310DateConverters$LocalDateToDateConverter.class
 pl/lodz/p/ftims/pai/domain/util/JSR310LocalDateDeserializer.class
+pl/lodz/p/ftims/pai/config/SoapConfig.class
 pl/lodz/p/ftims/pai/security/UserDetailsService.class
 pl/lodz/p/ftims/pai/domain/Department.class
 pl/lodz/p/ftims/pai/web/rest/errors/ExceptionTranslator.class
@@ -110,7 +118,9 @@ pl/lodz/p/ftims/pai/domain/util/JSR310DateConverters$DateToLocalDateConverter.cl
 pl/lodz/p/ftims/pai/repository/AuthorityRepository.class
 pl/lodz/p/ftims/pai/security/SpringSecurityAuditorAware.class
 pl/lodz/p/ftims/pai/repository/CustomAuditEventRepository.class
+pl/lodz/p/ftims/pai/web/soap/SynchronizationBusinessDataProcessor.class
 pl/lodz/p/ftims/pai/config/JHipsterProperties$Metrics$Spark.class
+pl/lodz/p/ftims/pai/service/model/DepartmentSyncRequestResponse.class
 pl/lodz/p/ftims/pai/web/rest/LogsResource.class
 pl/lodz/p/ftims/pai/config/CloudDatabaseConfiguration.class
 pl/lodz/p/ftims/pai/security/Http401UnauthorizedEntryPoint.class

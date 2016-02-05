@@ -49,6 +49,17 @@ server:
         enabled: true
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
 
+
+# ===================================================================
+# App-specific Config (headquarters)
+# ===================================================================
+
+sync:
+    departmentsToSync:
+        - http://localhost:18080/dbsync/users
+
+
+
 # ===================================================================
 # JHipster specific properties
 # ===================================================================

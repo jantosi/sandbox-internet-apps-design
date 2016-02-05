@@ -94,6 +94,11 @@
       "sourceMethod": "getSwagger()",
       "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties",
       "type": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger"
+    },
+    {
+      "name": "sync",
+      "sourceType": "pl.lodz.p.ftims.pai.service.UserService",
+      "type": "pl.lodz.p.ftims.pai.service.UserService"
     }
   ],
   "hints": [],
@@ -259,6 +264,11 @@
       "name": "jhipster.swagger.version",
       "sourceType": "pl.lodz.p.ftims.pai.config.JHipsterProperties$Swagger",
       "type": "java.lang.String"
+    },
+    {
+      "name": "sync.departments-to-sync",
+      "sourceType": "pl.lodz.p.ftims.pai.service.UserService",
+      "type": "java.util.List<java.lang.String>"
     }
   ]
 }
