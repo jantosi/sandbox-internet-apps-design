@@ -18,7 +18,7 @@ import java.util.Objects;
 })
 @Entity
 @Table(name = "employee")
-public class Employee implements Serializable {
+public class Employee implements Serializable, DoubleKeyed {
 
     @XmlElement(required = true)
     @Id

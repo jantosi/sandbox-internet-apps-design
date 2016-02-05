@@ -25,7 +25,7 @@ import java.util.Objects;
 })
 @Entity
 @Table(name = "transit")
-public class Transit implements Serializable {
+public class Transit implements Serializable, DoubleKeyed {
 
     @XmlElement(required = true)
     @Id

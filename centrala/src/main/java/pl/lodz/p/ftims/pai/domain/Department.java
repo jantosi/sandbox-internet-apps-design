@@ -19,7 +19,7 @@ import java.util.Objects;
 })
 @Entity
 @Table(name = "department")
-public class Department implements Serializable {
+public class Department implements Serializable, DoubleKeyed {
 
     @XmlElement(required = true)
     @Id

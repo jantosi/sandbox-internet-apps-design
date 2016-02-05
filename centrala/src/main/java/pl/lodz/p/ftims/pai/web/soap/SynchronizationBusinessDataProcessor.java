@@ -5,10 +5,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import pl.lodz.p.ftims.pai.domain.Department;
-import pl.lodz.p.ftims.pai.domain.Employee;
-import pl.lodz.p.ftims.pai.domain.Transit;
-import pl.lodz.p.ftims.pai.domain.Transporter;
+import pl.lodz.p.ftims.pai.domain.*;
 import pl.lodz.p.ftims.pai.repository.DepartmentRepository;
 import pl.lodz.p.ftims.pai.repository.EmployeeRepository;
 import pl.lodz.p.ftims.pai.repository.TransitRepository;
@@ -57,20 +54,22 @@ public class SynchronizationBusinessDataProcessor {
 
     private void deleteNotExisting(SynchronizationBusinessDataRequest request) {
         final Long departmentId = request.getDepartmentId();
-        final List<Long> newDepartmentIds = request.getDepartment().stream().map(Department::getId).collect(Collectors.toList());
-        final List<Long> newTransporterIds = request.getTransporter().stream().map(Transporter::getId).collect(Collectors.toList());
-        final List<Long> newEployeeIds = request.getEmployee().stream().map(Employee::getId).collect(Collectors.toList());
-        final List<Long> transitIds = request.getTransit().stream().map(Transit::getId).collect(Collectors.toList());
 
-        final List<Long> oldDepartmentIds = departmentRepository.selectIds();
-        final List<Long> oldTransporterIds = transporterRepository.selectIds();
-        final List<Long> oldEmployeeIds = employeeRepository.selectIds();
-        final List<Long> oldTransitIds = transitRepository.selectIds();
+        List<DoubleKey> newDepartmentKeys = request.getDepartment().stream().map(DoubleKeyed::key).collect(Collectors.toList());
+        List<DoubleKey> newTransporterKeys = request.getTransporter().stream().map(DoubleKeyed::key).collect(Collectors.toList());
+        List<DoubleKey> newEmployeeKeys = request.getEmployee().stream().map(DoubleKeyed::key).collect(Collectors.toList());
+        List<DoubleKey> newTransitKeys = request.getTransit().stream().map(DoubleKeyed::key).collect(Collectors.toList());
 
-//        oldDepartmentIds.stream().filter(oldId -> !newDepartmentIds.contains(oldId)).forEach(departmentRepository::delete);
-//        oldTransporterIds.stream().filter(oldId -> !newTransporterIds.contains(oldId)).forEach(transporterRepository::delete);
-//        oldEmployeeIds.stream().filter(oldId -> !newEployeeIds.contains(oldId)).forEach(employeeRepository::delete);
-//        oldTransitIds.stream().filter(oldId -> !transitIds.contains(oldId)).forEach(transitRepository::delete);
+        List<DoubleKey> oldDepartmentKeys = departmentRepository.selectDoubleKeys();
+        List<DoubleKey> oldTransporterKeys = transporterRepository.selectDoubleKeys();
+        List<DoubleKey> oldEmployeeKeys = employeeRepository.selectDoubleKeys();
+        List<DoubleKey> oldTransitKeys = transitRepository.selectDoubleKeys();
+
+        oldDepartmentKeys.stream().filter($ -> !newDepartmentKeys.contains($)).forEach($ -> departmentRepository.delete($.id));
+        oldTransporterKeys.stream().filter($ -> !newTransporterKeys.contains($)).forEach($ -> transporterRepository.delete($.id));
+        oldEmployeeKeys.stream().filter($ -> !newEmployeeKeys.contains($)).forEach($ -> employeeRepository.delete($.id));
+        oldTransitKeys.stream().filter($ -> !newTransitKeys.contains($)).forEach($ -> transitRepository.delete($.id));
+
     }
 
     private void updateOrSaveNew(SynchronizationBusinessDataRequest request){
