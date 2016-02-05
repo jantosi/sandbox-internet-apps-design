@@ -75,6 +75,7 @@ public class SynchronizationBusinessDataSoapService {
 
         JAXBContext jc = JAXBContext.newInstance(SynchronizationBusinessDataRequest.class);
         SynchronizationBusinessDataRequest request = new SynchronizationBusinessDataRequest();
+        request.setDepartmentId(Long.valueOf(environmentConfiguration.getDepartmentId()));
         request.setEmployee(employeeRepository.findAll());
         request.setDepartment(departmentRepository.findAll());
         request.setTransit(transitRepository.findAll());
