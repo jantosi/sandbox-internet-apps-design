@@ -12,6 +12,7 @@
     <xs:element name="synchronizationBusinessDataRequest">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="departmentId" type="xs:long"/>
                 <xs:element name="transporter" type="tns:transporter"/>
                 <xs:element name="employee" type="tns:employee"/>
                 <xs:element name="department" type="tns:department"/>

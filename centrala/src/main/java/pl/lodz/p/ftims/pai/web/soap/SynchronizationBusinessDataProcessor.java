@@ -54,6 +54,7 @@ public class SynchronizationBusinessDataProcessor {
     }
 
     private void deleteNotExisting(SynchronizationBusinessDataRequest request) {
+        final Long departmentId = request.getDepartmentId();
         final List<Long> newDepartmentIds = request.getDepartment().stream().map(Department::getId).collect(Collectors.toList());
         final List<Long> newTransporterIds = request.getTransporter().stream().map(Transporter::getId).collect(Collectors.toList());
         final List<Long> newEployeeIds = request.getEmployee().stream().map(Employee::getId).collect(Collectors.toList());
