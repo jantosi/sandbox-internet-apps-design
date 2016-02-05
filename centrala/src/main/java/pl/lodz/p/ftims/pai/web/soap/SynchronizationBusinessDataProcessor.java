@@ -76,19 +76,19 @@ public class SynchronizationBusinessDataProcessor {
     private void updateOrSaveNew(SynchronizationBusinessDataRequest request){
         final Long departmentId = request.getDepartmentId();
         for(Department d : request.getDepartment()) {
-            d.setDataSourceId(departmentId);
+            d.setSourceDepartmentId(departmentId);
             d.setDataSourceId(d.getId());
         }
         for(Transporter t : request.getTransporter()){
-            t.setDataSourceId(departmentId);
+            t.setSourceDepartmentId(departmentId);
             t.setDataSourceId(t.getId());
         }
         for(Employee e : request.getEmployee()){
-            e.setDataSourceId(departmentId);
+            e.setSourceDepartmentId(departmentId);
             e.setDataSourceId(e.getId());
         }
         for(Transit t : request.getTransit()){
-            t.setDataSourceId(departmentId);
+            t.setSourceDepartmentId(departmentId);
             t.setDataSourceId(t.getId());
         }
         departmentRepository.save(request.getDepartment());

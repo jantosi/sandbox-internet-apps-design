@@ -27,11 +27,11 @@ public class Department implements Serializable {
     private Long id;
 
     @XmlElement(required = true)
-    @Column(name = "dataSourceId")
+    @Column(name = "data_source_id")
     private Long dataSourceId;
 
     @XmlElement(required = true)
-    @Column(name = "sourceDepartmentId")
+    @Column(name = "source_department_id")
     private Long sourceDepartmentId;
 
     @XmlElement(required = true)
