@@ -12,6 +12,8 @@ import java.util.Objects;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "department", propOrder = {
     "id",
+    "dataSourceId",
+    "sourceDepartmentId",
     "name",
     "address"
 })
@@ -25,6 +27,14 @@ public class Department implements Serializable {
     private Long id;
 
     @XmlElement(required = true)
+    @Column(name = "dataSourceId")
+    private Long dataSourceId;
+
+    @XmlElement(required = true)
+    @Column(name = "sourceDepartmentId")
+    private Long sourceDepartmentId;
+
+    @XmlElement(required = true)
     @Column(name = "name")
     private String name;
 
@@ -35,6 +45,14 @@ public class Department implements Serializable {
     @XmlTransient
     @Column(name = "city")
     private String city;
+
+    public Long getSourceDepartmentId() {
+        return sourceDepartmentId;
+    }
+
+    public void setSourceDepartmentId(Long sourceDepartmentId) {
+        this.sourceDepartmentId = sourceDepartmentId;
+    }
 
     public Long getId() {
         return id;
@@ -66,6 +84,14 @@ public class Department implements Serializable {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Long getDataSourceId() {
+        return dataSourceId;
+    }
+
+    public void setDataSourceId(Long dataSourceId) {
+        this.dataSourceId = dataSourceId;
     }
 
     @Override
